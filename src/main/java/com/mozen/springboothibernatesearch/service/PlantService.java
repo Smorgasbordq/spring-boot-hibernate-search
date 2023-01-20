@@ -1,12 +1,13 @@
 package com.mozen.springboothibernatesearch.service;
 
-import com.mozen.springboothibernatesearch.model.Plant;
-import com.mozen.springboothibernatesearch.repository.PlantRepository;
-import org.springframework.stereotype.Service;
-
-import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.mozen.springboothibernatesearch.model.Plant;
+import com.mozen.springboothibernatesearch.repository.PlantRepository;
 
 @Service
 public class PlantService {
@@ -38,10 +39,10 @@ public class PlantService {
 
 	public List<Plant> updatePlants() {
 		List<Plant> plants = plantRepository.findAll();
-		Instant now = Instant.now();
+		List<Plant> updates = new ArrayList<>(plants.size());
 		for (Plant plant : plants) {
-			plant.setUpdatedAt(now);
+			updates.add(plant.copy());
 		}
-		return plantRepository.saveAll(plants);
+		return plantRepository.saveAll(updates);
 	}
 }

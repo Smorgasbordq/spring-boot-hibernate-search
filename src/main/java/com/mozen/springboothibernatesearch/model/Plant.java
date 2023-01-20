@@ -63,6 +63,13 @@ public class Plant {
     @Column(name = "createdAt")
     private Instant createdAt;
 
+    @Field()
     @Column(name = "updatedAt")
     private Instant updatedAt;
+
+	public Plant copy() {
+		Plant plant = new Plant(name, scientificName, family);
+		plant.id = id;
+		return plant;
+	}
 }
