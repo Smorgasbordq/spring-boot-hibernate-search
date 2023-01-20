@@ -21,6 +21,14 @@ public class PlantController {
         this.plantService = plantService;
     }
 
+    @GetMapping("/update")
+    public List<Plant> updatePlants(SearchRequestDTO searchRequestDTO) {
+
+        log.info("Request for plant update received with data : " + searchRequestDTO);
+
+        return plantService.updatePlants();
+    }
+
     @GetMapping("/search")
     public List<Plant> searchPlants(SearchRequestDTO searchRequestDTO) {
 

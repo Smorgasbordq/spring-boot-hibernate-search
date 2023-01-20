@@ -35,7 +35,7 @@ public class Plant {
         this.name = name;
         this.scientificName = scientificName;
         this.family = family;
-        this.createdAt = Instant.now();
+        this.createdAt = this.updatedAt = Instant.now();
     }
 
     @Id
@@ -61,5 +61,8 @@ public class Plant {
     private String family;
 
     @Column(name = "createdAt")
-    private Instant createdAt ;
+    private Instant createdAt;
+
+    @Column(name = "updatedAt")
+    private Instant updatedAt;
 }

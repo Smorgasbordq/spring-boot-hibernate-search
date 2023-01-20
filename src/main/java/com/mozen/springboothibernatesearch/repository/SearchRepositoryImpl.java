@@ -15,8 +15,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class SearchRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
-        implements SearchRepository<T, ID> {
+public class SearchRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements SearchRepository<T, ID> {
 
     private final EntityManager entityManager;
 
