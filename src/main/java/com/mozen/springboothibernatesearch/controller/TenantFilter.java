@@ -25,7 +25,7 @@ class TenantFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String tc = Tenants.TEN1;
 		String query = req.getQueryString();
-		int i = query.indexOf("tc=");
+		int i = query == null ? -1 : query.indexOf("tc=");
 		if (i >= 0) {
 			int j = query.indexOf("&", i + 3);
 			tc = URLDecoder.decode(j >= 0 ? query.substring(i + 3, j) : query.substring(i + 3), "UTF-8");

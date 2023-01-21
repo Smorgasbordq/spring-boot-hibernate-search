@@ -50,7 +50,11 @@ public class Application {
 	@Bean
 	public ApplicationRunner buildIndex(Indexer indexer) {
 		return (ApplicationArguments args) -> {
-			indexer.indexPersistedData("com.mozen.springboothibernatesearch.model.Plant");
+			for (String tenantId : Tenants.TENANTS) {
+				TenantContext.setCurrentTenant(tenantId);
+				indexer.indexPersistedData("com.mozen.springboothibernatesearch.model.Plant");
+			}
+			TenantContext.clear();
 		};
 	}
 }
